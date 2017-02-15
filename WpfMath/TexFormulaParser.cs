@@ -64,6 +64,8 @@ namespace WpfMath
 
         public static void Initialize()
         {
+            if (isInitialized) return;
+
             //
             // If start application isn't WPF, pack isn't registered by defaultTexFontParser
             //
@@ -140,7 +142,7 @@ namespace WpfMath
         public TexFormulaParser()
         {
             if (!isInitialized)
-                throw new InvalidOperationException("Parser has not yet been initialized.");
+                Initialize();
         }
 
         //public TexFormula Convert(System.Linq.Expressions.Expression value)
